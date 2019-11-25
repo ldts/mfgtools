@@ -153,7 +153,7 @@ static int usb_add(libusb_device *dev)
 		return -1;
 
 	ConfigItem *item = get_config()->find(desc.idVendor, desc.idProduct, desc.bcdDevice);
-	std::this_thread::sleep_for(std::chrono::milliseconds(200));
+	std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 	if (item)
 	{
@@ -245,7 +245,7 @@ int polling_usb(std::atomic<int>& bexit)
 
 		oldlist = newlist;
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(200));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 		if (g_wait_usb_timeout >= 0 && !g_known_device_appeared)
 		{
